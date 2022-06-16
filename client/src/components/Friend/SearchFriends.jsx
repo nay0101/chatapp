@@ -19,17 +19,17 @@ const SearchFriends = ({ setFilteredUsers }) => {
   };
 
   const handleSearch = (e) => {
-    const search_value = e.target.value.toLowerCase();
-    const filtered_items = users.filter((user) => {
-      const name = user.firstname + " " + user.lastname;
+    const search_value = searchValue.toLowerCase();
+    const filtered_items = users.filter((u) => {
+      const name = u.firstname + " " + u.lastname;
       return name.toLowerCase().includes(search_value);
     });
-    if (search_value === "") return setFilteredUsers();
+    if (search_value === "") return setFilteredUsers(null);
     setFilteredUsers(filtered_items);
   };
 
   const resetList = () => {
-    setFilteredUsers();
+    setFilteredUsers(null);
     setSearchValue("");
   };
 

@@ -80,11 +80,9 @@ const AuthProvider = ({ children }) => {
         setErrorMsg(error);
         return false;
       }
-      const { user_id } = (
-        await axios.post(`${BASE_URL}/signup`, user_data, {
-          withCredentials: true,
-        })
-      ).data;
+      await axios.post(`${BASE_URL}/signup`, user_data, {
+        withCredentials: true,
+      });
       setErrorMsg(null);
       return true;
     } catch (e) {
@@ -109,7 +107,6 @@ const AuthProvider = ({ children }) => {
           })
         ).data;
         return result;
-        // setUser(result);
       }
     } catch (e) {
       console.log(e);

@@ -26,7 +26,7 @@ const FriendProfile = ({ user_id, searching = false, online = true }) => {
     getFriends();
     getSentRequests();
     getReceivedRequests();
-  }, [sent, received, friended, requestID]);
+  }, [sent, received, friended, requestID, user_id]);
 
   const getFriends = async () => {
     try {

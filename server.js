@@ -2,6 +2,7 @@ require("dotenv").config();
 const http = require("http");
 const express = require("express");
 const path = require("path");
+const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const session = require("express-session");
@@ -21,13 +22,39 @@ mongoose
 const app = express();
 const port = process.env.PORT || "4000";
 const httpServer = http.createServer(app);
-const io = new Server(httpServer, {});
+let io;
+
+if (process.env.NODE_ENV === "development") {
+  io = new Server(httpServer, {
+    cors: {
+      origin: "http://localhost:3000",
+      methods: ["GET", "POST"],
+      credentials: true,
+    },
+  });
+}
+
+if (process.env.NODE_ENV === "production") {
+  io = new Server(httpServer, {});
+}
 
 const loginRouter = require("./routes/loginRouter");
 const usersRouter = require("./routes/usersRouter");
 const friendsRouter = require("./routes/friendsRouter");
 const friendRequestsRouter = require("./routes/friendRequestsRouter");
 const chatRouter = require("./routes/chatRouter");
+
+if (process.env.NODE_ENV === "production") {
+  app.use((req, res, next) => {
+    if (req.header("x-forwarded-proto") !== "https")
+      res.redirect(`https://${req.header("host")}${req.url}`);
+    else next();
+  });
+}
+
+if (process.env.NODE_ENV === "development") {
+  app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+}
 
 app.use(logger("dev"));
 app.use(express.json());

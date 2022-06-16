@@ -2,6 +2,7 @@ import axios from "axios";
 import { useMediaQuery } from "react-responsive";
 
 const BASE_URL = "https://chitchat-chatapp.herokuapp.com/api";
+// const BASE_URL = "http://localhost:4000/api";
 
 const getUser = async (id) => {
   try {

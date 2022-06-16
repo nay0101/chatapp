@@ -5,11 +5,10 @@ import { useState } from "react";
 import ReceivedRequests from "./ReceivedRequests";
 
 const FriendList = () => {
-  const [filteredUsers, setFilteredUsers] = useState();
+  const [filteredUsers, setFilteredUsers] = useState(null);
   const [onlineFriendsCount, setOnlineFriendsCount] = useState(0);
   const [offlineFriendsCount, setOfflineFriendsCount] = useState(0);
   const [requestsCount, setRequestsCount] = useState(0);
-
   return (
     <>
       <SearchFriends setFilteredUsers={setFilteredUsers} />
@@ -18,6 +17,7 @@ const FriendList = () => {
           <div className="flex w-100 mt-1 justify-n overflow-y" key={index}>
             <FriendProfile user_id={user._id} searching={true} />
           </div>
+          // <div key={index}>{user.username}</div>
         ))
       ) : (
         <div className="flex dir-col w-100 mt-1 justify-fs overflow-y">
