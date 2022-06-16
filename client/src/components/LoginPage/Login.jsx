@@ -347,7 +347,7 @@ const Login = ({
             </div>
           </div>
 
-          <div className={`flex mb-2 ${isDesktop ? "align-fs" : "dir-col"}`}>
+          {/* <div className={`flex mb-2 ${isDesktop ? "align-fs" : "dir-col"}`}>
             <div className="flex justify-fs w-100">
               <label htmlFor="Profile Picture" className="input-label">
                 Profile Picture
@@ -366,7 +366,7 @@ const Login = ({
                 onChange={(e) => setImage(e.target.files[0])}
               />
             </div>
-          </div>
+          </div> */}
 
           <button type="submit" className="button mt-1">
             Sign Up
