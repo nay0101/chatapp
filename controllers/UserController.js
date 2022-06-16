@@ -35,7 +35,7 @@ const user_update = async (req, res) => {
     const file = req.file;
     if (!file)
       req.body.profile_picture =
-        "public\\profile_pictures\\default_profile_picture.png";
+        "public\\default_profile_pictures\\default_profile_picture.png";
     if (file) req.body.profile_picture = file.path;
     await User.findByIdAndUpdate(req.params.user_id, req.body);
     res.status(200).end();

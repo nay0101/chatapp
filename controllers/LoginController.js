@@ -38,7 +38,8 @@ const sign_up = async (req, res) => {
   let profile_picture, error;
   const file = req.file;
   if (!file)
-    profile_picture = "public\\profile_pictures\\default_profile_picture.png";
+    profile_picture =
+      "public\\default_profile_pictures\\default_profile_picture.png";
   if (file) profile_picture = file.path;
   try {
     const user = await User.findOne({ username: formatted_username });
