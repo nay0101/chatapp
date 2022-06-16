@@ -1,0 +1,64 @@
+@use "sass:map";
+
+.input-label {
+  font-weight: 800;
+  font-size: map.get($font-sizes, "font-l");
+}
+
+%input-field {
+  height: 2rem;
+  border-radius: 5px;
+
+  &:focus {
+    background-color: map.get($colors, "color-theme-secondary");
+    outline: none;
+  }
+
+  &[type="file"] {
+    border: none;
+    height: 2.5rem;
+
+    &:focus {
+      background-color: map.get($colors, "color-secondary");
+    }
+  }
+}
+
+.input-field {
+  @extend %input-field;
+  border: $default-border;
+
+  &-error {
+    @extend %input-field;
+    border: $error-border;
+  }
+}
+
+.search-box {
+  width: 75%;
+  height: 1.5rem;
+  border: none;
+  border-bottom: 1px solid map.get($colors, "color-primary");
+
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid map.get($colors, "color-theme");
+    background-color: map.get($colors, "color-theme-secondary");
+  }
+}
+
+.login-form {
+  @include form(100%, 20rem);
+
+  &-mobile {
+    @include form(100%, 80vw);
+  }
+}
+
+.signup-form {
+  @include form(35rem, 20rem);
+
+  &-mobile {
+    @include form(auto, 70vw);
+  }
+}

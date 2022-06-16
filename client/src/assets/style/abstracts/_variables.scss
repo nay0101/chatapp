@@ -1,0 +1,60 @@
+@use "sass:map";
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap");
+
+$font-primary: "Baloo 2", crusive;
+
+$font-sizes: (
+  "font-s": 1rem,
+  "font-m": 1.25rem,
+  "font-l": 1.5rem,
+  "font-xl": 2rem,
+  "title-font-xs": 4rem,
+  "title-font-s": 6rem,
+  "title-font-l": 8rem,
+);
+
+$colors: (
+  "color-primary": #000,
+  "color-secondary": #fff,
+  "color-theme": #00d1ac,
+  "color-theme-secondary": #c7fff5,
+  "color-grey": #a6a6a6,
+  "color-danger": #ff0000,
+  "color-pink": #ff7a7a,
+  "color-confirm": #00eb0c,
+);
+
+$margins: (
+  "m": "margin",
+  "mt": "margin-top",
+  "mr": "margin-right",
+  "mb": "margin-bottom",
+  "ml": "margin-left",
+);
+
+$paddings: (
+  "p": "padding",
+  "pt": "padding-top",
+  "pr": "padding-right",
+  "pb": "padding-bottom",
+  "pl": "padding-left",
+);
+
+$aligns: (
+  "n": normal,
+  "c": center,
+  "s": start,
+  "e": end,
+  "fs": flex-start,
+  "fe": flex-end,
+);
+
+$justifies: (
+  "sb": space-between,
+  "sa": space-around,
+  "se": space-evenly,
+  "stre": stretch,
+);
+
+$default-border: 1px solid map.get($colors, "color-theme");
+$error-border: 1px solid map.get($colors, "color-danger");

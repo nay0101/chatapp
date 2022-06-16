@@ -1,0 +1,19 @@
+*,
+*::before,
+*::after {
+  font-family: $font-primary;
+}
+
+// font-size
+@each $name, $size in $font-sizes {
+  .#{$name} {
+    font-size: $size;
+  }
+}
+
+// font-weight
+@for $i from 1 through 9 {
+  .font-weight-#{$i*100} {
+    font-weight: $i * 100;
+  }
+}

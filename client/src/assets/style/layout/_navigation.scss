@@ -1,0 +1,39 @@
+@use "sass:map";
+
+.nav-wrapper {
+  border-bottom: 1px solid map.get($colors, "color-theme");
+  min-width: 100%;
+}
+
+.nav {
+  min-height: 3.5rem;
+}
+
+.login-item {
+  padding: 1rem;
+  font-size: 1.25rem;
+  border: 1px solid white;
+  cursor: pointer;
+  text-align: center;
+
+  &:hover {
+    border: $default-border;
+    transition: all ease 1s;
+  }
+}
+
+.profile {
+  cursor: pointer;
+}
+
+.profile.picture {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: $default-border;
+}
+
+.profile.name {
+  border: none;
+  background-color: map.get($colors, "color-secondary");
+}

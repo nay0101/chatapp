@@ -1,0 +1,7 @@
+@mixin form($width, $min-width, $height: auto) {
+  min-width: $min-width;
+  width: $width;
+  height: $height;
+  border: $default-border;
+  border-radius: 10px;
+}

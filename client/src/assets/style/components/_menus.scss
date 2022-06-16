@@ -1,0 +1,130 @@
+%dropdown {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: auto;
+  background-color: white;
+  border: 1px solid black;
+  transition: all 300ms;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+
+  &-xy {
+    @extend %dropdown;
+    right: 0;
+    top: 0;
+    min-width: 40vw;
+    transform-origin: top right;
+
+    &[data-dropdown="false"] {
+      visibility: hidden;
+      animation: closeDropdown-xy 300ms ease-in-out forwards;
+    }
+
+    &[data-dropdown="true"] {
+      visibility: visible;
+      animation: openDropdown-xy 300ms ease-in-out forwards;
+    }
+  }
+
+  &-y {
+    @extend %dropdown;
+    min-width: 20vw;
+    right: 0;
+    transform-origin: top;
+
+    &[data-dropdown="false"] {
+      visibility: hidden;
+      animation: closeDropdown-y 300ms ease-in-out forwards;
+    }
+
+    &[data-dropdown="true"] {
+      visibility: visible;
+      animation: openDropdown-y 300ms ease-in-out forwards;
+    }
+  }
+}
+
+.modal-background {
+  display: flex;
+  justify-content: flex-start;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.6;
+  transition: all 500ms;
+
+  &[data-menu="open"] {
+    visibility: visible;
+  }
+
+  &[data-menu="close"] {
+    visibility: hidden;
+  }
+}
+
+.slide-menu {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  height: 100%;
+  background-color: white;
+  border-right: 1px solid black;
+  overflow-y: auto;
+  transition: all 500ms;
+
+  &[data-menu="open"] {
+    left: 0;
+    visibility: visible;
+  }
+
+  &[data-menu="close"] {
+    left: -100%;
+    visibility: hidden;
+  }
+}
+
+@keyframes openDropdown-xy {
+  0% {
+    transform: scaleY(0) scaleX(0);
+  }
+  100% {
+    transform: scaleY(1) scaleX(1);
+  }
+}
+
+@keyframes closeDropdown-xy {
+  0% {
+    transform: scaleY(1) scaleX(1);
+  }
+  100% {
+    transform: scaleY(0) scaleX(0);
+  }
+}
+
+@keyframes openDropdown-y {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes closeDropdown-y {
+  0% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0);
+  }
+}

@@ -1,0 +1,263 @@
+.wrapper {
+  display: grid;
+  height: 100vh;
+  max-height: 100vh;
+  grid-template-areas:
+    "nav nav nav"
+    "list message message";
+  grid-template-rows: fit-content(100%) 1fr;
+  grid-template-columns: repeat(3, 1fr);
+
+  &-login {
+    display: grid;
+    height: 100vh;
+    max-height: 100vh;
+    grid-template-areas:
+      "nav"
+      "form";
+    grid-template-rows: fit-content(100%) 1fr;
+    grid-template-columns: 1fr;
+  }
+}
+
+.mobile-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.grid-area {
+  &-nav {
+    grid-area: nav;
+  }
+
+  &-list {
+    grid-area: list;
+  }
+
+  &-message {
+    grid-area: message;
+  }
+
+  &-form {
+    grid-area: form;
+  }
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  flex-wrap: nowrap;
+  row-gap: normal;
+  column-gap: normal;
+  justify-content: center;
+  align-content: normal;
+  align-items: center;
+}
+
+.dir-col {
+  flex-direction: column;
+}
+
+.dir-col-rev {
+  flex-direction: column-reverse;
+}
+
+.dir-row {
+  flex-direction: row;
+}
+
+.basis-100 {
+  flex-basis: 100%;
+}
+
+.basis-fill {
+  flex-basis: fill;
+}
+
+.basis-max-c {
+  flex-basis: max-content;
+}
+
+.basis-min-c {
+  flex-basis: min-content;
+}
+
+.basis-fit-c {
+  flex-basis: fit-content;
+}
+
+.f-wrap {
+  flex-wrap: wrap;
+}
+
+.f-nowrap {
+  flex-wrap: nowrap;
+}
+
+.f-wrap-r {
+  flex-wrap: wrap-reverse;
+}
+
+@for $i from 0 through 10 {
+  @for $j from 0 through 9 {
+    @if $j != 0 {
+      .basis-#{$i}#{$j} {
+        flex-basis: ($i + ($j * 0.1)) * 1rem;
+      }
+
+      .grow-#{$i}#{$j} {
+        flex-grow: $i + ($j * 0.1);
+      }
+
+      .shrink-#{$i}#{$j} {
+        flex-shrink: $i + ($j * 0.1);
+      }
+
+      .row-gap-#{$i}#{$j} {
+        row-gap: ($i + ($j * 0.1)) * 1rem;
+      }
+
+      .col-gap-#{$i}#{$j} {
+        column-gap: ($i + ($j * 0.1)) * 1rem;
+      }
+    } @else {
+      .basis-#{$i} {
+        flex-basis: $i * 1rem;
+      }
+
+      .grow-#{$i} {
+        flex-grow: $i;
+      }
+
+      .shrink-#{$i} {
+        flex-shrink: $i;
+      }
+
+      .row-gap-#{$i} {
+        row-gap: $i * 1rem;
+      }
+
+      .col-gap-#{$i} {
+        column-gap: $i * 1rem;
+      }
+    }
+  }
+}
+
+@each $key, $align in $aligns {
+  .align-#{$key} {
+    align-items: $align;
+  }
+
+  .justify-#{$key} {
+    justify-content: $align;
+  }
+
+  .align-s-#{$key} {
+    align-self: $align;
+  }
+
+  .justify-s-#{$key} {
+    justify-self: $align;
+  }
+}
+
+@each $key, $justify in $justifies {
+  .justify-#{$key} {
+    justify-content: $justify;
+  }
+}
+
+//width and height
+@each $i in (25, 50, 75, 100) {
+  .w-#{$i} {
+    width: $i * 1%;
+  }
+
+  .h-#{$i} {
+    height: $i * 1%;
+  }
+}
+
+//margin and padding
+@for $i from 0 through 10 {
+  @for $j from 0 through 9 {
+    @each $key, $property in $margins {
+      @if $j != 0 {
+        .#{$key}-#{$i}#{$j} {
+          #{$property}: ($i + ($j * 0.1)) * 1rem;
+        }
+      } @else {
+        .#{$key}-#{$i} {
+          #{$property}: $i * 1rem;
+        }
+      }
+    }
+
+    @each $key, $property in $paddings {
+      @if $j != 0 {
+        .#{$key}-#{$i}#{$j} {
+          #{$property}: ($i + ($j * 0.1)) * 1rem;
+        }
+      } @else {
+        .#{$key}-#{$i} {
+          #{$property}: $i * 1rem;
+        }
+      }
+    }
+
+    @if $j != 0 {
+      .mx-#{$i}#{$j} {
+        margin-left: ($i + ($j * 0.1)) * 1rem;
+        margin-right: ($i + ($j * 0.1)) * 1rem;
+      }
+
+      .my-#{$i}#{$j} {
+        margin-top: ($i + ($j * 0.1)) * 1rem;
+        margin-bottom: ($i + ($j * 0.1)) * 1rem;
+      }
+
+      .px-#{$i}#{$j} {
+        padding-left: ($i + ($j * 0.1)) * 1rem;
+        padding-right: ($i + ($j * 0.1)) * 1rem;
+      }
+
+      .py-#{$i}#{$j} {
+        padding-top: ($i + ($j * 0.1)) * 1rem;
+        padding-bottom: ($i + ($j * 0.1)) * 1rem;
+      }
+    } @else {
+      .mx-#{$i} {
+        margin-left: $i * 1rem;
+        margin-right: $i * 1rem;
+      }
+
+      .my-#{$i} {
+        margin-top: $i * 1rem;
+        margin-bottom: $i * 1rem;
+      }
+
+      .px-#{$i} {
+        padding-left: $i * 1rem;
+        padding-right: $i * 1rem;
+      }
+
+      .py-#{$i} {
+        padding-top: $i * 1rem;
+        padding-bottom: $i * 1rem;
+      }
+    }
+  }
+}
+
+.overflow-x {
+  overflow-x: auto;
+}
+
+.overflow-y {
+  overflow-y: auto;
+}

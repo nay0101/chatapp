@@ -1,0 +1,49 @@
+@use "sass:map";
+
+%button-base {
+  background-color: map.get($colors, "color-theme");
+  color: map.get($colors, "color-secondary");
+  cursor: pointer;
+
+  &:hover {
+    border: $default-border;
+    background-color: map.get($colors, "color-secondary");
+    color: map.get($colors, "color-theme");
+  }
+}
+
+.input-field[type="file"]::file-selector-button {
+  @extend %button-base;
+  height: 2.5rem;
+  border: $default-border;
+  border-radius: 10px;
+  font-style: italic;
+}
+
+.button {
+  @extend %button-base;
+  height: 3rem;
+  width: 8rem;
+  border: 0;
+  border-radius: 50px;
+  font-size: 1.25rem;
+}
+
+.button-s {
+  @extend %button-base;
+  width: 5rem;
+  height: 2.5rem;
+  border: 0;
+  border-radius: 20px;
+}
+
+.util-button {
+  @extend %button-base;
+  height: 2rem;
+  border: 0;
+  border-radius: 20px;
+}
+
+.pointer {
+  cursor: pointer;
+}

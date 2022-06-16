@@ -1,0 +1,21 @@
+@each $name, $color in $colors {
+  .#{$name} {
+    color: $color;
+
+    &_hover {
+      &:hover {
+        color: $color;
+      }
+    }
+  }
+
+  .bg-#{$name} {
+    background-color: $color;
+
+    &_hover {
+      &:hover {
+        background-color: $color;
+      }
+    }
+  }
+}
