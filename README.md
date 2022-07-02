@@ -1,6 +1,6 @@
 # Chit-Chat Chat App
 
-Website: https://chitchat-chatapp.herokuapp.com/
+Demo: https://chitchat-chatapp.herokuapp.com/
 
 Demo Accounts:
   
